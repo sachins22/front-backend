@@ -9,6 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from '@/src/Home';
 import Login from '@/src/Login';
+import Log from '@/src/Log';
 
 
 const Stack = createStackNavigator();
@@ -16,7 +17,12 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer independent={true}>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Log">
+        <Stack.Screen
+          name="Log"
+          component={Log}
+          options={{headerShown:false}}
+        />
         <Stack.Screen
           name="Home"
           component={Home}

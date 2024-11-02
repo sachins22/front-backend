@@ -4,58 +4,34 @@ import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import axios from 'axios';
 
-export default function Home({route}) {
+export default function Log() {
   const navigation = useNavigation();
-  const {name}= route.params || {};
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+//   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    try {
-      const response = await axios.post('https://node-backend-zc2t.onrender.com/api/login', {
-        email,
-        password,
-      });
-
-      if (response.status === 200) {
-        // Navigate to a different screen on successful login
-        navigation.navigate('Login', { email, password }); // Change 'HomePage' to your desired route name
-      } else {
-        Alert.alert('Login Failed', 'Invalid email or password');
-      }
-    } catch (error) {
-      Alert.alert('Error', error.response?.data?.message || 'An error occurred during login. Please try again.');
-      console.error('Login Error:', error);
-    }
+   navigation.navigate('Home',{name:name})
   };
 
   return (
     <LinearGradient style={styles.gradient} colors={['#E7460CFF', '#15E04FFF', '#B2E117FF']}>
       <View style={styles.container}>
-        <Text style={styles.header}>Hlo {name}</Text>
-        <Text style={styles.title}>Login</Text>
+        <Text style={styles.header}>Hlo SS22</Text>
+        <Text style={styles.title}>Name</Text>
 
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="name"
           placeholderTextColor='black'
           keyboardType="email-address"
           autoCapitalize="none"
-          value={email}
-          onChangeText={setEmail}
+          value={name}
+          onChangeText={setName}
         />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          placeholderTextColor='black'
-          secureTextEntry
-          value={password}
-          onChangeText={setPassword}
-        />
-
+       
         <View style={styles.buttonContainer}>
-          <Button title="Login" onPress={handleLogin} />
+          <Button title="name" onPress={handleLogin} />
         </View>
       </View>
     </LinearGradient>
