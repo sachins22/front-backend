@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { LinearGradient } from 'expo-linear-gradient';
 import axios from 'axios';
 
 export default function Home() {
@@ -27,6 +28,10 @@ export default function Home() {
   };
 
   return (
+    <LinearGradient
+    style={styles.gradent}
+    colors={["orange",'white']}
+    >
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
 
@@ -51,10 +56,14 @@ export default function Home() {
         <Button title="Login" onPress={handleLogin} />
       </View>
     </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
+  gradent:{
+    flex:1
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
